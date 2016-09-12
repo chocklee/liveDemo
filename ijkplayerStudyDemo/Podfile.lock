@@ -1,0 +1,40 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - LFLiveKit (2.0)
+  - SDAutoLayout (2.1.4)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking
+  - LFLiveKit
+  - SDAutoLayout
+  - SDWebImage
+  - YYModel
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  LFLiveKit: 2a6cf2411ff06b62237af05f7b94f00681f0ce00
+  SDAutoLayout: 1b2926b193a63287f473dae426ed07861e21e271
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: a686a56daf38a47d5b952318dd4068d128a16ee5
+
+COCOAPODS: 1.0.1
