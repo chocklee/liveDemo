@@ -194,15 +194,12 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
         if (live.name.length > 0) {
             _nameLabel.sd_layout.heightIs(40);
             _nameLabel.text = live.name;
+        } else {
+            _nameLabel.sd_layout.heightIs(0);
         }
         // 高度自适应cell设置步骤1
         [self setupAutoHeightWithBottomView:_footerSeparaterView bottomMargin:0];
     }
-}
-
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    _nameLabel.sd_layout.heightIs(0);
 }
 
 @end
