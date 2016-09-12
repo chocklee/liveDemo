@@ -21,18 +21,19 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 
 @property (nonatomic, strong) UIButton *closeButton;
 
-@property(nonatomic, strong) IJKFFMoviePlayerController * player;
+@property (nonatomic, strong) IJKFFMoviePlayerController * player;
 
 @end
 
 @implementation LiveViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 设置背景图片
-    _bgImageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    CreatorModel *creator = _live.creator;
-    NSURL *bgImageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageURLString,creator.portrait]];
+    _bgImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    NSURL *bgImageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageURLString,_live.creator.portrait]];
     [_bgImageView sd_setImageWithURL:bgImageUrl];
     [self.view addSubview:_bgImageView];
     
@@ -46,15 +47,14 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     NSURL * url = [NSURL URLWithString:_live.stream_addr];
     //初始化播放器，播放在线视频或直播(RTMP)
-    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:url withOptions:options];
-    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.player.view.frame = self.view.bounds;
+    _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:url withOptions:options];
+    _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _player.view.frame = self.view.bounds;
     //缩放模式
-    self.player.scalingMode = IJKMPMovieScalingModeAspectFill;
+    _player.scalingMode = IJKMPMovieScalingModeAspectFill;
     //开启自动播放
-    self.player.shouldAutoplay = YES;
-    self.view.autoresizesSubviews = YES;
-    [self.view addSubview:self.player.view];
+    _player.shouldAutoplay = YES;
+    [self.view addSubview:_player.view];
     
     // 添加关闭按钮
     _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -68,6 +68,7 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    // 准备播放
     [self.player prepareToPlay];
 }
 
@@ -77,6 +78,7 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    // 一定要停止播放，否则会造成内存泄漏
     [self.player shutdown];
 }
 

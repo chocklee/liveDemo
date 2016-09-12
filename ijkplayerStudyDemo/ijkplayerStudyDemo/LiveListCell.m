@@ -30,6 +30,8 @@ static CGFloat const liveLabelTopOffset = 10.0f;
 static CGFloat const liveLabelRightOffset = 10.0f;
 static CGFloat const liveLabelWidth = 62.0f;
 static CGFloat const liveLabelHeight = 20.0f;
+static CGFloat const nameLabelOffset = 10.0f;
+static CGFloat const footerSeparaterViewHeight = 7.0f;
 
 static NSString * const imageURLString = @"http://img.meelive.cn/";
 
@@ -48,6 +50,8 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 @property (nonatomic, strong) UIImageView *showImageView;
 
 @property (nonatomic, strong) UILabel *liveLabel;
+
+@property (nonatomic, strong) UILabel *nameLabel;
 
 @property (nonatomic, strong) UIView *footerSeparaterView;
 
@@ -92,6 +96,10 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     _watchingLabel.textColor = [UIColor hexString:@"9fabaf"];
     [self.contentView addSubview:_watchingLabel];
     
+    _footerSeparaterView = [[UIView alloc] init];
+    _footerSeparaterView.backgroundColor = [UIColor hexString:@"f0f7f6"];
+    [self.contentView addSubview:_footerSeparaterView];
+    
     _showImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:_showImageView];
     
@@ -107,9 +115,11 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     _liveLabel.layer.cornerRadius = 10.0f;
     [_showImageView addSubview:_liveLabel];
     
-    _footerSeparaterView = [[UIView alloc] init];
-    _footerSeparaterView.backgroundColor = [UIColor hexString:@"f0f7f6"];
-    [self.contentView addSubview:_footerSeparaterView];
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.backgroundColor = [UIColor whiteColor];
+    _nameLabel.textColor = [UIColor hexString:@"596569"];
+    _nameLabel.font = [UIFont systemFontOfSize:14.0f];
+    [self.contentView addSubview:_nameLabel];
 }
 
 - (void)installConstraints {
@@ -154,9 +164,15 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     .widthIs(liveLabelWidth)
     .heightIs(liveLabelHeight);
     
-    _footerSeparaterView.sd_layout
+    _nameLabel.sd_layout
     .topSpaceToView(_showImageView, 0)
-    .bottomSpaceToView(self.contentView, 0)
+    .heightIs(0)
+    .leftSpaceToView(self.contentView, nameLabelOffset)
+    .rightSpaceToView(self.contentView, nameLabelOffset);
+    
+    _footerSeparaterView.sd_layout
+    .topSpaceToView(_nameLabel, 0)
+    .heightIs(footerSeparaterViewHeight)
     .widthRatioToView(_showImageView, 1.0);
 }
 
@@ -164,11 +180,10 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     if (_live != live) {
         _live = nil;
         _live = live;
-        
-        CreatorModel *creator = live.creator;
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageURLString,creator.portrait]];
+
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageURLString,live.creator.portrait]];
         [_headerImageButton sd_setImageWithURL:url forState:UIControlStateNormal];
-        _nickLabel.text = creator.nick;
+        _nickLabel.text = live.creator.nick;
         if (live.city.length > 0) {
             [_cityButton setTitle:live.city forState:UIControlStateNormal];
         } else {
@@ -176,7 +191,18 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
         }
         _onlinUsersLabel.text = [NSString stringWithFormat:@"%lu",live.online_users];
         [_showImageView sd_setImageWithURL:url];
+        if (live.name.length > 0) {
+            _nameLabel.sd_layout.heightIs(40);
+            _nameLabel.text = live.name;
+        }
+        // 高度自适应cell设置步骤1
+        [self setupAutoHeightWithBottomView:_footerSeparaterView bottomMargin:0];
     }
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    _nameLabel.sd_layout.heightIs(0);
 }
 
 @end
