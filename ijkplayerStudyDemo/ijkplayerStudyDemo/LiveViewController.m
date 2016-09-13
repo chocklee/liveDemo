@@ -12,6 +12,7 @@
 #import "CreatorModel.h"
 #import <UIImageView+WebCache.h>
 #import <SDAutoLayout.h>
+#import "LiveTopViewController.h"
 
 static NSString * const imageURLString = @"http://img.meelive.cn/";
 
@@ -36,8 +37,10 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     [self setupPlayer];
     
     [self addNotifications];
+
+    [self setupTopView];
     
-    [self setupButton];
+    [self setupCloseButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -90,8 +93,15 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     [self.view addSubview:_player.view];
 }
 
+// 设置顶部视图
+- (void)setupTopView {
+    LiveTopViewController *ltVC = [[LiveTopViewController alloc] init];
+    [self addChildViewController:ltVC];
+    [self.view addSubview:ltVC.view];
+}
+
 // 创建按钮
-- (void)setupButton {
+- (void)setupCloseButton {
     // 添加关闭按钮
     _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_closeButton setImage:[UIImage imageNamed:@"mg_room_btn_guan_h"] forState:UIControlStateNormal];

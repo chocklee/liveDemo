@@ -24,6 +24,7 @@
 		4C155C901D6A8E10007C9282 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C155C8F1D6A8E10007C9282 /* MobileCoreServices.framework */; };
 		4C155C921D6A8E1B007C9282 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C155C911D6A8E1B007C9282 /* OpenGLES.framework */; };
 		4C155C961D6A8E2D007C9282 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C155C951D6A8E2D007C9282 /* VideoToolbox.framework */; };
+		4CAB8EE01D87D9BD00015E5B /* LiveTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB8EDF1D87D9BD00015E5B /* LiveTopViewController.m */; };
 		4CBB0D181D8265CD00D0211A /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D171D8265CD00D0211A /* CaptureViewController.m */; };
 		4CBB0D1B1D8265E100D0211A /* LiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D1A1D8265E100D0211A /* LiveListViewController.m */; };
 		4CBB0D1E1D8265EF00D0211A /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D1D1D8265EF00D0211A /* LiveViewController.m */; };
@@ -59,6 +60,8 @@
 		4C155C8F1D6A8E10007C9282 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4C155C911D6A8E1B007C9282 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		4C155C951D6A8E2D007C9282 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4CAB8EDE1D87D9BD00015E5B /* LiveTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveTopViewController.h; sourceTree = "<group>"; };
+		4CAB8EDF1D87D9BD00015E5B /* LiveTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTopViewController.m; sourceTree = "<group>"; };
 		4CBB0D161D8265CD00D0211A /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
 		4CBB0D171D8265CD00D0211A /* CaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureViewController.m; sourceTree = "<group>"; };
 		4CBB0D191D8265E100D0211A /* LiveListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveListViewController.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				4CBB0D1A1D8265E100D0211A /* LiveListViewController.m */,
 				4CBB0D1C1D8265EF00D0211A /* LiveViewController.h */,
 				4CBB0D1D1D8265EF00D0211A /* LiveViewController.m */,
+				4CAB8EDE1D87D9BD00015E5B /* LiveTopViewController.h */,
+				4CAB8EDF1D87D9BD00015E5B /* LiveTopViewController.m */,
 				4CBB0D241D82830E00D0211A /* NetworkTools.h */,
 				4CBB0D251D82830E00D0211A /* NetworkTools.m */,
 				4CBB0D271D82893E00D0211A /* LiveModel.h */,
@@ -328,6 +333,7 @@
 				4C155C691D6A8D43007C9282 /* AppDelegate.m in Sources */,
 				4CBB0D2C1D82895400D0211A /* CreatorModel.m in Sources */,
 				4CBB0D381D82ABED00D0211A /* UIView+RoundedCorner.m in Sources */,
+				4CAB8EE01D87D9BD00015E5B /* LiveTopViewController.m in Sources */,
 				4CBB0D3B1D82AEA600D0211A /* UIColor+HexString.m in Sources */,
 				4C155C661D6A8D43007C9282 /* main.m in Sources */,
 				4CBB0D261D82830E00D0211A /* NetworkTools.m in Sources */,

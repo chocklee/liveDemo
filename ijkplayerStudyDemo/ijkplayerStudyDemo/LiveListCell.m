@@ -185,7 +185,8 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
         [_headerImageButton sd_setImageWithURL:url forState:UIControlStateNormal];
         _nickLabel.text = live.creator.nick;
         if (live.city.length > 0) {
-            [_cityButton setTitle:live.city forState:UIControlStateNormal];
+            NSString *city = [NSString stringWithFormat:@"%@ >",live.city];
+            [_cityButton setTitle:city forState:UIControlStateNormal];
         } else {
             [_cityButton setTitle:@"难道在火星？" forState:UIControlStateNormal];
         }
