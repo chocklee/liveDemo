@@ -15,6 +15,7 @@
 #import "LiveTopViewController.h"
 
 #define SW [UIScreen mainScreen].bounds.size.width
+#define SH [UIScreen mainScreen].bounds.size.height
 
 static NSString * const imageURLString = @"http://img.meelive.cn/";
 
@@ -30,11 +31,13 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 
+@property (nonatomic, assign) CGFloat topViewX;
+
 @end
 
 @implementation LiveViewController
 
-#pragma mark - view
+#pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,7 +51,7 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     
     [self setupCloseButton];
     
-    [self addSwipeGestureRecognizer];
+    [self addPanGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -106,6 +109,7 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     _ltVC = [[LiveTopViewController alloc] init];
     [self addChildViewController:_ltVC];
     [self.view addSubview:_ltVC.view];
+    _topViewX = _ltVC.view.frame.origin.x;
 }
 
 // 创建按钮
@@ -125,27 +129,54 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-// 添加滑动手势
-- (void)addSwipeGestureRecognizer {
+// 添加拖拽手势
+- (void)addPanGestureRecognizer {
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [self.view addGestureRecognizer:_panGestureRecognizer];
 }
 
+// 拖拽手势响应方法
 - (void)handlePan:(UIPanGestureRecognizer *)sender {
-    if (_ltVC.view.frame.origin.x == 0) {
-        
-    }
-    if (_ltVC.view.frame.origin.x == SW) {
-        
-    }
-    
+    // 返回一个CGpoint,这个Point的内容代表当前鼠标相对于刚开始（按下的位置）的相对坐标。
+    CGPoint point = [sender translationInView:sender.view];
     if (sender.state == UIGestureRecognizerStateChanged) {
-        CGPoint point = [sender locationInView:sender.view];
-        
+        if (_ltVC.view.frame.origin.x + point.x > 0) {
+            _ltVC.view.transform = CGAffineTransformTranslate(_ltVC.view.transform, point.x, 0);
+            [sender setTranslation:CGPointZero inView:sender.view];
+        }
     }
     
     if (sender.state == UIGestureRecognizerStateEnded) {
-        
+        if (_topViewX == 0) {
+            if (_ltVC.view.frame.origin.x > 50) {
+                [UIView animateWithDuration:0.2 animations:^{
+                    _ltVC.view.frame = CGRectMake(SW, 0, SW, SH);
+                } completion:^(BOOL finished) {
+                    _topViewX = SW;
+                }];
+            } else {
+                [UIView animateWithDuration:0.2 animations:^{
+                    _ltVC.view.frame = CGRectMake(0, 0, SW, SH);
+                } completion:^(BOOL finished) {
+                    _topViewX = 0;
+                }];
+            }
+        }
+        if (_topViewX == SW) {
+            if (_ltVC.view.frame.origin.x > SW - 70) {
+                [UIView animateWithDuration:0.2 animations:^{
+                    _ltVC.view.frame = CGRectMake(SW, 0, SW, SH);
+                } completion:^(BOOL finished) {
+                    _topViewX = SW;
+                }];
+            } else {
+                [UIView animateWithDuration:0.2 animations:^{
+                    _ltVC.view.frame = CGRectMake(0, 0, SW, SH);
+                } completion:^(BOOL finished) {
+                    _topViewX = 0;
+                }];
+            }
+        }
     }
 }
 
