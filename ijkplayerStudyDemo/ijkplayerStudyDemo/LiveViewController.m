@@ -14,6 +14,8 @@
 #import <SDAutoLayout.h>
 #import "LiveTopViewController.h"
 
+#define SW [UIScreen mainScreen].bounds.size.width
+
 static NSString * const imageURLString = @"http://img.meelive.cn/";
 
 @interface LiveViewController ()
@@ -23,6 +25,10 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 @property (nonatomic, strong) UIButton *closeButton;
 
 @property (nonatomic, strong) IJKFFMoviePlayerController * player;
+
+@property (nonatomic, strong) LiveTopViewController *ltVC;
+
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 
 @end
 
@@ -41,6 +47,8 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     [self setupTopView];
     
     [self setupCloseButton];
+    
+    [self addSwipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -95,9 +103,9 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 
 // 设置顶部视图
 - (void)setupTopView {
-    LiveTopViewController *ltVC = [[LiveTopViewController alloc] init];
-    [self addChildViewController:ltVC];
-    [self.view addSubview:ltVC.view];
+    _ltVC = [[LiveTopViewController alloc] init];
+    [self addChildViewController:_ltVC];
+    [self.view addSubview:_ltVC.view];
 }
 
 // 创建按钮
@@ -115,6 +123,30 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     // 一定要停止播放，否则会造成内存泄漏
     [_player shutdown];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+// 添加滑动手势
+- (void)addSwipeGestureRecognizer {
+    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self.view addGestureRecognizer:_panGestureRecognizer];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)sender {
+    if (_ltVC.view.frame.origin.x == 0) {
+        
+    }
+    if (_ltVC.view.frame.origin.x == SW) {
+        
+    }
+    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint point = [sender locationInView:sender.view];
+        
+    }
+    
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        
+    }
 }
 
 #pragma mark - notification
