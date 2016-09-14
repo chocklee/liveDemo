@@ -7,7 +7,6 @@
 //
 
 #import "LiveListCell.h"
-#import "UIView+RoundedCorner.h"
 #import "UIColor+HexString.h"
 #import <SDAutoLayout.h>
 #import "LiveModel.h"
@@ -128,7 +127,7 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     .leftSpaceToView(self.contentView, headerImageLeftOffset)
     .heightIs(headerImageSize)
     .widthIs(headerImageSize);
-    [_headerImageButton setRoundedCorner];
+    [_headerImageButton setSd_cornerRadiusFromWidthRatio:@0.5];
     
     _nickLabel.sd_layout
     .topSpaceToView(self.contentView, nickLabelTopOffset)
