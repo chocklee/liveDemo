@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^CloseButtonBlock)();
+
+@protocol StartLiveViewDelegate <NSObject>
+
+// 开始直播
+- (void)startLive;
+
+@end
+
 @interface StartLiveView : UIView
+
+@property (nonatomic, copy) CloseButtonBlock block;
+
+@property (nonatomic, assign) id<StartLiveViewDelegate> delegate;
 
 @end

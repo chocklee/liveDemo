@@ -64,6 +64,7 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
 }
 
@@ -78,7 +79,11 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
     // 设置背景图片
     _bgImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     NSURL *bgImageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageURLString,_live.creator.portrait]];
-    [_bgImageView sd_setImageWithURL:bgImageUrl];
+    if (_live) {
+        [_bgImageView sd_setImageWithURL:bgImageUrl];
+    } else {
+        _bgImageView.image = [UIImage imageNamed:@"bg_zbfx"];
+    }
     [self.view addSubview:_bgImageView];
     
     // 给背景图片添加磨玻璃效果
@@ -92,7 +97,13 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 - (void)setupPlayer {
     //使用默认配置
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
-    NSURL * url = [NSURL URLWithString:_live.stream_addr];
+    NSURL * url = [[NSURL alloc] init];
+    if (_live) {
+        url = [NSURL URLWithString:_live.stream_addr];
+    } else {
+        url = [NSURL URLWithString:@"http://vafd3cb0e.live.126.net/live/5b3da0f454d247beb26bfa543aeffe14.flv"];
+    }
+
     //初始化播放器，播放在线视频或直播(RTMP)
     _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:url withOptions:options];
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -236,15 +247,12 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
         case IJKMPMovieFinishReasonPlaybackEnded:
             NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonPlaybackEnded: %d\n", reason);
             break;
-            
         case IJKMPMovieFinishReasonUserExited:
             NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonUserExited: %d\n", reason);
             break;
-            
         case IJKMPMovieFinishReasonPlaybackError:
             NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonPlaybackError: %d\n", reason);
             break;
-            
         default:
             NSLog(@"playbackPlayBackDidFinish: ???: %d\n", reason);
             break;
@@ -256,7 +264,6 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
 }
 
 - (void)moviePlayBackStateDidChange:(NSNotification *)notification {
-    
     switch (_player.playbackState) {
             
         case IJKMPMoviePlaybackStateStopped:
@@ -276,11 +283,12 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
             break;
             
         case IJKMPMoviePlaybackStateSeekingForward:
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: interrupted", (int)_player.playbackState);
+            break;
         case IJKMPMoviePlaybackStateSeekingBackward: {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: seeking", (int)_player.playbackState);
             break;
         }
-            
         default: {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: unknown", (int)_player.playbackState);
             break;
