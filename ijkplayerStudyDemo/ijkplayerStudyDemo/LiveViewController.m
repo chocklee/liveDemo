@@ -145,7 +145,6 @@ static NSString * const imageURLString = @"http://img.meelive.cn/";
             [sender setTranslation:CGPointZero inView:sender.view];
         }
     }
-    
     if (sender.state == UIGestureRecognizerStateEnded) {
         if (_topViewX == 0) {
             if (_ltVC.view.frame.origin.x > 50) {
