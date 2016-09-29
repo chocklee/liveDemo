@@ -24,6 +24,9 @@
 		4C155C901D6A8E10007C9282 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C155C8F1D6A8E10007C9282 /* MobileCoreServices.framework */; };
 		4C155C921D6A8E1B007C9282 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C155C911D6A8E1B007C9282 /* OpenGLES.framework */; };
 		4C155C961D6A8E2D007C9282 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C155C951D6A8E2D007C9282 /* VideoToolbox.framework */; };
+		4C3671561D8946650086D6C1 /* StartLiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3671551D8946650086D6C1 /* StartLiveView.m */; };
+		4C48C2731D8FC3AB00DD2A28 /* LiveTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C48C2721D8FC3AB00DD2A28 /* LiveTopViewController.m */; };
+		4C8CDE4F1D8E443B00654E32 /* LiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8CDE4E1D8E443B00654E32 /* LiveView.m */; };
 		4CAB8EE01D87D9BD00015E5B /* LiveTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB8EDF1D87D9BD00015E5B /* LiveTopViewController.m */; };
 		4CBB0D181D8265CD00D0211A /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D171D8265CD00D0211A /* CaptureViewController.m */; };
 		4CBB0D1B1D8265E100D0211A /* LiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D1A1D8265E100D0211A /* LiveListViewController.m */; };
@@ -32,7 +35,6 @@
 		4CBB0D291D82893E00D0211A /* LiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D281D82893E00D0211A /* LiveModel.m */; };
 		4CBB0D2C1D82895400D0211A /* CreatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D2B1D82895400D0211A /* CreatorModel.m */; };
 		4CBB0D311D82A18400D0211A /* LiveListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D301D82A18400D0211A /* LiveListCell.m */; };
-		4CBB0D381D82ABED00D0211A /* UIView+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D371D82ABED00D0211A /* UIView+RoundedCorner.m */; };
 		4CBB0D3B1D82AEA600D0211A /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB0D3A1D82AEA600D0211A /* UIColor+HexString.m */; };
 		A8313746984C998CAB7C9A32 /* libPods-ijkplayerStudyDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 714853D224BD0A38C2C683E3 /* libPods-ijkplayerStudyDemo.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,11 @@
 		4C155C8F1D6A8E10007C9282 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4C155C911D6A8E1B007C9282 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		4C155C951D6A8E2D007C9282 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4C3671541D8946650086D6C1 /* StartLiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartLiveView.h; sourceTree = "<group>"; };
+		4C3671551D8946650086D6C1 /* StartLiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartLiveView.m; sourceTree = "<group>"; };
+		4C48C2721D8FC3AB00DD2A28 /* LiveTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTopViewController.m; sourceTree = "<group>"; };
+		4C8CDE4D1D8E443B00654E32 /* LiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveView.h; sourceTree = "<group>"; };
+		4C8CDE4E1D8E443B00654E32 /* LiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveView.m; sourceTree = "<group>"; };
 		4CAB8EDE1D87D9BD00015E5B /* LiveTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveTopViewController.h; sourceTree = "<group>"; };
 		4CAB8EDF1D87D9BD00015E5B /* LiveTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTopViewController.m; sourceTree = "<group>"; };
 		4CBB0D161D8265CD00D0211A /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
@@ -76,8 +83,6 @@
 		4CBB0D2B1D82895400D0211A /* CreatorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatorModel.m; sourceTree = "<group>"; };
 		4CBB0D2F1D82A18400D0211A /* LiveListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveListCell.h; sourceTree = "<group>"; };
 		4CBB0D301D82A18400D0211A /* LiveListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveListCell.m; sourceTree = "<group>"; };
-		4CBB0D361D82ABED00D0211A /* UIView+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RoundedCorner.h"; sourceTree = "<group>"; };
-		4CBB0D371D82ABED00D0211A /* UIView+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundedCorner.m"; sourceTree = "<group>"; };
 		4CBB0D391D82AEA600D0211A /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		4CBB0D3A1D82AEA600D0211A /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		714853D224BD0A38C2C683E3 /* libPods-ijkplayerStudyDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ijkplayerStudyDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,22 +163,25 @@
 				4C155C641D6A8D43007C9282 /* Supporting Files */,
 				4CBB0D161D8265CD00D0211A /* CaptureViewController.h */,
 				4CBB0D171D8265CD00D0211A /* CaptureViewController.m */,
+				4C3671541D8946650086D6C1 /* StartLiveView.h */,
+				4C3671551D8946650086D6C1 /* StartLiveView.m */,
+				4C8CDE4D1D8E443B00654E32 /* LiveView.h */,
+				4C8CDE4E1D8E443B00654E32 /* LiveView.m */,
 				4CBB0D191D8265E100D0211A /* LiveListViewController.h */,
 				4CBB0D1A1D8265E100D0211A /* LiveListViewController.m */,
 				4CBB0D1C1D8265EF00D0211A /* LiveViewController.h */,
 				4CBB0D1D1D8265EF00D0211A /* LiveViewController.m */,
+				4CBB0D2F1D82A18400D0211A /* LiveListCell.h */,
+				4CBB0D301D82A18400D0211A /* LiveListCell.m */,
 				4CAB8EDE1D87D9BD00015E5B /* LiveTopViewController.h */,
 				4CAB8EDF1D87D9BD00015E5B /* LiveTopViewController.m */,
+				4C48C2721D8FC3AB00DD2A28 /* LiveTopViewController.m */,
 				4CBB0D241D82830E00D0211A /* NetworkTools.h */,
 				4CBB0D251D82830E00D0211A /* NetworkTools.m */,
 				4CBB0D271D82893E00D0211A /* LiveModel.h */,
 				4CBB0D281D82893E00D0211A /* LiveModel.m */,
 				4CBB0D2A1D82895400D0211A /* CreatorModel.h */,
 				4CBB0D2B1D82895400D0211A /* CreatorModel.m */,
-				4CBB0D2F1D82A18400D0211A /* LiveListCell.h */,
-				4CBB0D301D82A18400D0211A /* LiveListCell.m */,
-				4CBB0D361D82ABED00D0211A /* UIView+RoundedCorner.h */,
-				4CBB0D371D82ABED00D0211A /* UIView+RoundedCorner.m */,
 				4CBB0D391D82AEA600D0211A /* UIColor+HexString.h */,
 				4CBB0D3A1D82AEA600D0211A /* UIColor+HexString.m */,
 			);
@@ -328,11 +336,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBB0D1E1D8265EF00D0211A /* LiveViewController.m in Sources */,
+				4C3671561D8946650086D6C1 /* StartLiveView.m in Sources */,
 				4CBB0D1B1D8265E100D0211A /* LiveListViewController.m in Sources */,
 				4C155C6C1D6A8D43007C9282 /* ViewController.m in Sources */,
+				4C48C2731D8FC3AB00DD2A28 /* LiveTopViewController.m in Sources */,
 				4C155C691D6A8D43007C9282 /* AppDelegate.m in Sources */,
 				4CBB0D2C1D82895400D0211A /* CreatorModel.m in Sources */,
-				4CBB0D381D82ABED00D0211A /* UIView+RoundedCorner.m in Sources */,
+				4C8CDE4F1D8E443B00654E32 /* LiveView.m in Sources */,
 				4CAB8EE01D87D9BD00015E5B /* LiveTopViewController.m in Sources */,
 				4CBB0D3B1D82AEA600D0211A /* UIColor+HexString.m in Sources */,
 				4C155C661D6A8D43007C9282 /* main.m in Sources */,
