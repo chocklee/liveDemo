@@ -7,10 +7,10 @@ target 'ijkplayerStudyDemo' do
 
   # Pods for ijkplayerStudyDemo
 
-  pod 'LFLiveKit'
-  pod 'AFNetworking'
-  pod 'SDWebImage'
-  pod 'YYModel'
-  pod 'SDAutoLayout'
-
+    pod 'LFLiveKit'
+    pod 'AFNetworking'
+    pod 'SDWebImage'
+    pod 'YYModel'
+    pod 'SDAutoLayout'
+    
 end
